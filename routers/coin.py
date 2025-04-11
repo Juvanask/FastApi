@@ -9,7 +9,7 @@ router = APIRouter()
 @router.get("/")
 def get_all_coins():
     res = requests.get("https://api.binance.com/api/v3/ticker/24hr")
-    return res.json()
+    return res.json()[:100]  # ✅ Limit to 100 coins
 
 @router.get("/{symbol}")
 def get_coin(symbol: str):
